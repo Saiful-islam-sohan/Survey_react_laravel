@@ -1,20 +1,43 @@
 
+
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { BeakerIcon } from '@heroicons/react/24/solid'
+import Login from './views/Login'
+import Dashboard from './views/Dashboard'
+import SingUp from './views/SingUp'
+import Survayes from './views/Survayes'
+import GuestLayout from './components/GuestLayout'
+import DefaultLayout from './components/DefaultLayout'
 
-function App() {
-  
-
+export default function App() {
   return (
     <>
-    <div className='bg-gray-300'>
-    app.jsx
-    <BeakerIcon className="h-6 w-6 text-blue-500" />
-    </div>
-     
-     
+      <Routes>
+
+        <Route path='/' element={<DefaultLayout></DefaultLayout>}>
+          <Route path='/' element={<Dashboard></Dashboard>}></Route>
+          <Route path='survey' element={<Survayes></Survayes>}></Route>
+
+        </Route>
+
+
+        <Route path='/' element={<GuestLayout></GuestLayout>}>
+          <Route path='/singup' element={<SingUp></SingUp>}></Route>
+
+          <Route path='/login' element={<Login></Login>}></Route>
+
+        </Route>
+
+
+
+
+
+
+
+      </Routes>
+
+
     </>
   )
 }
-
-export default App
+App
